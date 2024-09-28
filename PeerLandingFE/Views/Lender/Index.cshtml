@@ -24,78 +24,68 @@
 
 </table>
 
-<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+<div class="modal fade" id="showLoanModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                <h5 class="modal-title" id="showLoanModalLabel">Detail Loan</h5>
             </div>
             <div class="modal-body">
                 <form id="editUserForm">
+                   
                     <div class="form-group">
-                        <label for="userName">Name</label>
-                        <input type="text" class="form-control" id="userName" required>
+                        <label for="borrowerName">Name</label>
+                        <p> <span id="borrowerName"></span></p>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="userRole">Role</label>
-                        <select class="form-control" id="userRole" required>
-                            <option value="lender">Lender</option>
-                            <option value="borrower">Borrower</option>
-                        </select>
+                        <label for="amount">Amount</label>
+                        <p> <span id="amount"></span></p>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="userBalance">Balance</label>
-                        <input type="number" class="form-control" id="userBalance" required>
+                        <label for="interestRate">Bunga</label>
+                        <p> <span id="interestRate"></span></p>
                     </div>
-                    <input type="hidden" id="userId" />
+
+                    <div class="form-group">
+                        <label for="duration">Durasi</label>
+                        <p> <span id="duration"></span></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <p> <span id="status"></span></p>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="returnAmount">Jumlah Pengembalian</label>
+                        <p><span id="returnAmount"></span></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnInterest">Keuntungan Dari Bunga</label>
+                        <p><span id="returnInterest"></span></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="createdAt">Dibuat</label>
+                        <p> <span id="createdAt"></span></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updatedAt">Terakhir Update</label>
+                        <p> <span id="updatedAt"></span></p>
+                    </div>
+                  
+                   
+                    <input type="hidden" id="loanId" />
                 </form>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="updateUser()">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addUserModalLabel">Tambah User</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="addUserForm" method="post" asp-controller="User" asp-action="Register">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="userEmail" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="userPassword" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Role</label>
-                        <select class="form-control" id="userRole" name="role" required>
-                            <option value="lender">Lender</option>
-                            <option value="borrower">Borrower</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="balance" class="form-label">Balance</label>
-                        <input type="number" class="form-control" id="balance" name="balance" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="createUser()">Save</button>
+                
             </div>
         </div>
     </div>

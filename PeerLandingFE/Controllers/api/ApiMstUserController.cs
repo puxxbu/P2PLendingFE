@@ -65,6 +65,27 @@ namespace PeerLandingFE.Controllers.api
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetUserData()
+        {
+
+            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.GetAsync($"{_apiSettings.BaseUrl}/user");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                return Ok(jsonData);
+            }
+            else
+            {
+                return BadRequest("Failed to get user");
+            }
+        }
+
+
         [HttpPut]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] ReqUserEditDto reqMstUserDto)
         {
@@ -80,7 +101,7 @@ namespace PeerLandingFE.Controllers.api
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PutAsync($"https://localhost:7239/rest/v1/user/{id}", content);
+            var response = await _httpClient.PutAsync($"{_apiSettings.BaseUrl}/user/{id}", content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -90,6 +111,35 @@ namespace PeerLandingFE.Controllers.api
             else
             {
                 return BadRequest("Failed to update user");
+            }
+
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUserBalance( [FromBody] ReqUpdateBalance reqUpdateBalance)
+        {
+            if (reqUpdateBalance == null)
+            {
+                return BadRequest("Balance is required");
+            }
+
+            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var json = JsonSerializer.Serialize(reqUpdateBalance);
+
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync($"{_apiSettings.BaseUrl}/user/balance", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                return Ok(jsonData);
+            }
+            else
+            {
+                return BadRequest("Failed to update user balance");
             }
 
         }

@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Topup";
+    Layout = "_LayoutLender";
+}
+
+
+<div class="row">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <h2>Lender Data</h2>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-start">
+                    <div>
+                        <h5 class="card-title">Nama</h5>
+                        <p class="card-text" id="lenderName"></p>
+                    </div>
+                    <div class="mt-3">
+                        <h5 class="card-title">Role</h5>
+                        <p class="card-text" id="lenderRole"></p>
+                    </div>
+                    <div class="mt-3">
+                        <h5 class="card-title">Balance Amount</h5>
+                        <p class="card-text" id="lenderBalance"></p>
+                    </div>
+                    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addBalanceModal">
+                        Add Balance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addBalanceModal" tabindex="-1" aria-labelledby="addBalanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBalanceModalLabel">Add Balance</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="balance" class="form-label">Balance Amount</label>
+                        <input type="number" class="form-control" id="balance" placeholder="Enter balance amount">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="topup()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/topup.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

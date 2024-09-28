@@ -18,6 +18,15 @@ namespace PeerLandingFE.Controllers
             return View();
         }
 
+        public IActionResult ListBorrower()
+        {
+            // Ambil data peminjam dari model/database
+    
+            // Kirim data peminjam ke view
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();

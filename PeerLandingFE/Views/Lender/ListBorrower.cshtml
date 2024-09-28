@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Lender";
+    Layout = "_layoutLender";
+}
+
+<div class="col-12 d-flex justify-content-between align-items-center">
+    <h2>List Requested Loan</h2>
+    <div class="mt-3">
+        <h5 class="card-title">Balance Amount</h5>
+        <p class="card-text" id="lenderBalance"></p>
+    </div>
+</div>
+
+<table class="table table-dark mt-3" id="requestedLoanTable">
+    <thead>
+        <tr>
+            <th>Peminjam</th>
+            <th>Jumlah Pinjaman</th>
+            <th>Bunga</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Data will be dynamically filled here -->
+    </tbody>
+</table>
+
+<div class="modal fade" id="showDetailLend" tabindex="-1" role="dialog" aria-labelledby="showDetailLendModal" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showDetailLendModal">Detail Loan</h5>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="borrowerName">Name</label>
+                    <p><span id="borrowerName"></span></p>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Jumlah Pinjaman</label>
+                    <p><span id="amount"></span></p>
+                </div>
+                <div class="form-group">
+                    <label for="interestRate">Bunga</label>
+                    <p><span id="interestRate"></span></p>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Durasi</label>
+                    <p><span id="duration"></span> <span> Bulan</span></p>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <p><span id="status"></span></p>    
+                </div>
+
+                <div class="form-group">    
+                    <label for="returnAmount">Jumlah Pengembalian</label>
+                    <p><span id="returnAmount"></span></p>
+                </div>
+
+                <div class="form-group">    
+                    <label for="returnInterest">Keuntungan Dari Bunga</label>
+                    <p><span id="returnInterest"></span></p>
+                </div>
+
+                </div>
+                <input type="hidden" id="loanId" />
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="lend()">Lend</button>
+            </div>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+<script src="~/js/requestedloan.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
