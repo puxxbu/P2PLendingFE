@@ -24,6 +24,7 @@ namespace PeerLandingFE.Controllers.api
             if (response.IsSuccessStatusCode)
             {
                 var responseData = await response.Content.ReadAsStringAsync();
+
                 return Ok(responseData);
             }
             else
