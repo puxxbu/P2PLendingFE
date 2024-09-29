@@ -167,11 +167,11 @@ function openAddUserModal() {
 
 
 async function createUser() {
-    const email = document.getElementById('userEmail').value;
-    const password = document.getElementById('userPassword').value;
-    const name = document.getElementById('name').value;
-    const role = document.getElementById('userRole').value;
-    const balance = document.getElementById('balance').value;
+    const email = document.getElementById('userEmail-input').value;
+    const password = document.getElementById('userPassword-input').value;
+    const name = document.getElementById('name-input').value;
+    const role = document.getElementById('userRole-input').value;
+    const balance = document.getElementById('balance-input').value;
 
 
     const reqAddUserDto = {

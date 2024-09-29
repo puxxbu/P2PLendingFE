@@ -70,19 +70,19 @@
                 <form id="addUserForm" method="post" asp-controller="User" asp-action="Register">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name-input" name="name" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="userEmail" name="email" required>
+                        <input type="email" class="form-control" id="userEmail-input" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="userPassword" name="password" required>
+                        <input type="password" class="form-control" id="userPassword-input" name="password" required>
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
-                        <select class="form-control" id="userRole" name="role" required>
+                        <select class="form-control" id="userRole-input" name="role" required>
                             <option value="lender">Lender</option>
                             <option value="borrower">Borrower</option>
                             <option value="admin">Admin</option>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="balance" class="form-label">Balance</label>
-                        <input type="number" class="form-control" id="balance" name="balance" required>
+                        <input type="number" class="form-control" id="balance-input" name="balance" required>
                     </div>
                 </form>
             </div>
