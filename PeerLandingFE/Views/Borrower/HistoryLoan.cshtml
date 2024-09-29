@@ -13,7 +13,7 @@
         <ul class="dropdown-menu">
             <li><a class="dropdown-item"  onclick="loadLoansByStatus('requested')">Requested</a></li>
             <li><a class="dropdown-item"  onclick="loadLoansByStatus('funded')">Funded</a></li>
-            <li><a class="dropdown-item" onclick="loadLoansByStatus('paid')">Paid</a></li>
+            <li><a class="dropdown-item" onclick="loadLoansByStatus('repaid')">Repaid</a></li>
             <li><a class="dropdown-item"  onclick="loadLoansByStatus('all')">All</a></li>
         </ul>
     </div>
@@ -37,72 +37,214 @@
 
 </table>
 
-<div class="modal fade" id="showLoanModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+ <div class="modal fade" id="showLoanModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="showLoanModalLabel">Detail Loan</h5>
+             </div>
+             <div class="modal-body">
+                 <form id="editUserForm">
+
+                     <div class="form-group">
+                         <label for="borrowerName">Name</label>
+                         <p> <span id="borrowerName"></span></p>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="amount">Amount</label>
+                         <p> <span id="amount"></span></p>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="interestRate">Bunga</label>
+                         <p> <span id="interestRate"></span></p>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="duration">Durasi</label>
+                         <p> <span id="duration"></span></p>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="status">Status</label>
+                         <p> <span id="status"></span></p>
+                     </div>
+
+
+                     <div class="form-group">
+                         <label for="returnAmount">Jumlah Pengembalian</label>
+                         <p><span id="returnAmount"></span></p>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="returnInterest">Bunga yang dibayar</label>
+                         <p><span id="returnInterest"></span></p>
+                     </div>
+
+                     <div class="form-group">
+                         <label for="createdAt">Dibuat</label>
+                         <p> <span id="createdAt"></span></p>
+                     </div>
+
+                     <div class="form-group">   
+                         <label for="updatedAt">Terakhir Update</label>
+                         <p> <span id="updatedAt"></span></p>
+                     </div>
+
+
+                     <input type="hidden" id="loanId" />
+                 </form>
+
+             </div>
+             <div class="modal-footer">
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+<div class="modal fade" id="showPayModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="showLoanModalLabel">Detail Loan</h5>
+                <h5 class="modal-title" id="showPayModalLabel">Detail Loan</h5>
             </div>
             <div class="modal-body">
                 <form id="editUserForm">
-
-                    <div class="form-group">
-                        <label for="borrowerName">Name</label>
-                        <p> <span id="borrowerName"></span></p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="amount">Amount</label>
+                                <p><span id="loan-amount"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="interestRate">Bunga</label>
+                                <p><span id="loan-interestRate"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Durasi</label>
+                                <p><span id="loan-duration"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <p><span id="loan-status"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="returnAmount">Jumlah Yang Perlu Dibayar</label>
+                                <p><span id="loan-returnAmount"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="returnInterest">Bunga</label>
+                                <p><span id="loan-returnInterest"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="createdAt">Dibuat</label>
+                                <p><span id="loan-createdAt"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="updatedAt">Terakhir Update</label>
+                                <p><span id="loan-updatedAt"></span></p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <p> <span id="amount"></span></p>
+                        <label>Pembayaran Cicilan</label>
+                        <div class="row payment-checkboxes" id="payment-checkboxes">
+                          
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="interestRate">Bunga</label>
-                        <p> <span id="interestRate"></span></p>
+                        <label for="updatedAt">Jumlah yang akan dibayar</label>
+                        <p><span id="loan-payAmount"></span></p>
                     </div>
 
-                    <div class="form-group">
-                        <label for="duration">Durasi</label>
-                        <p> <span id="duration"></span></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <p> <span id="status"></span></p>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="returnAmount">Jumlah Pengembalian</label>
-                        <p><span id="returnAmount"></span></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="returnInterest">Keuntungan Dari Bunga</label>
-                        <p><span id="returnInterest"></span></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="createdAt">Dibuat</label>
-                        <p> <span id="createdAt"></span></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="updatedAt">Terakhir Update</label>
-                        <p> <span id="updatedAt"></span></p>
-                    </div>
-
-
-                    <input type="hidden" id="loanId" />
+                    <input type="hidden" id="loan-loanId" />
                 </form>
-
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="pay()">Lend</button>
             </div>
         </div>
     </div>
 </div>
 
+
+<div class="modal fade" id="showPaidModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showPaidModalLabel">Detail Loan</h5>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="amount">Amount</label>
+                                <p><span id="paid-amount"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="interestRate">Bunga</label>
+                                <p><span id="paid-interestRate"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Durasi</label>
+                                <p><span id="paid-duration"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <p><span id="paid-status"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="returnAmount">Jumlah Yang Perlu Dibayar</label>
+                                <p><span id="paid-returnAmount"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="returnInterest">Bunga</label>
+                                <p><span id="paid-returnInterest"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="createdAt">Dibuat</label>
+                                <p><span id="paid-createdAt"></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="updatedAt">Terakhir Update</label>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pembayaran Cicilan</label>
+                        <div class="row payment-checkboxes" id="paid-checkboxes">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status Pembayaran Terakhir</label>
+                        <p><span id="paid-lastPaymentStatus"></span></p>
+                    </div>
+
+
+
+                  
+
+                    <input type="hidden" id="paid-loanId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="requestLoanModal" tabindex="-1" aria-labelledby="requestLoanModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

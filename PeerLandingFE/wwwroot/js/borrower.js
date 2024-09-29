@@ -134,17 +134,13 @@ async function requestLoan() {
     if (!response.ok) {
         alert('Failed to request loan');
         return;
-    }
-
-    const jsonData = await response.json();
-
-    if (jsonData.success) {
+    } else {
         alert('Request loan success');
         $('#requestLoanModal').modal('hide');
         fetchRequestedLoan();
-    } else {
-        alert('Topup failed');
     }
+
+   
 }
 
 async function fetchUserData() {

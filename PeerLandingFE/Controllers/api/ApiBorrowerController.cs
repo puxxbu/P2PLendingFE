@@ -41,6 +41,30 @@ namespace PeerLandingFE.Controllers.api
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetPaymentDetail(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return BadRequest("Id is required");
+            }
+
+            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.GetAsync($"{_apiSettings.BaseUrl}/repayment/payment-detail/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonData = await response.Content.ReadAsStringAsync();
+                return Ok(jsonData);
+            }
+            else
+            {
+                return BadRequest("Failed to get user");
+            }
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetLoanByStatus(string status)
         {
             if (string.IsNullOrEmpty(status))
@@ -87,6 +111,8 @@ namespace PeerLandingFE.Controllers.api
 
         }
 
+
+
         [HttpPost]
         public async Task<IActionResult> AddLoan([FromBody] ReqAddLoanDto reqAddLoanDto)
         {
@@ -101,6 +127,29 @@ namespace PeerLandingFE.Controllers.api
             if (response.IsSuccessStatusCode)
             {
                 return Ok("Loan added successfully");
+            }
+            else
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                return BadRequest(new { message = $"Failed to add user: {errorMessage}" });
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> PayLoan([FromBody] ReqPayLoan reqPayLoan)
+        {
+            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var json = JsonSerializer.Serialize(reqPayLoan);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync($"{_apiSettings.BaseUrl}/repayment/repay-loan", data);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return Ok("Loan payed successfully");
             }
             else
             {
