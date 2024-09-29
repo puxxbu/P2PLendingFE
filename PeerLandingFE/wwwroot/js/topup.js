@@ -1,6 +1,6 @@
 ﻿async function fetchLenderData() {
     const token = localStorage.getItem('token');
-    const response = await fetch('ApiMstUser/GetUserData', {
+    const response = await fetch('/ApiMstUser/GetUserData', {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token
@@ -21,6 +21,8 @@
 }
 
 function fillLenderData(lenderData) {
+    document.getElementById('lenderName').textContent = lenderData.name;
+    document.getElementById('lenderRole').textContent = lenderData.role;
     document.getElementById('lenderBalance').textContent = formatCurrency(lenderData.balance);
 }
 

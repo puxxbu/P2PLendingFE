@@ -17,11 +17,13 @@
         if (response.ok) {
             localStorage.setItem('token', result.data.token);
             localStorage.setItem('role', result.data.role);
-            // Periksa role pengguna dan lakukan redirect jika role adalah "admin"
+          
             if (result.data.role === 'admin') {
                 window.location.href = '/Admin';
-            } else if(result.data.role === 'lender') {
+            } else if (result.data.role === 'lender') {
                 window.location.href = '/Lender';
+            } else if (result.data.role === 'borrower') {
+                window.location.href = '/Borrower';
             }
         } else {
             alert(result.message || 'Login failed. Please try again.');

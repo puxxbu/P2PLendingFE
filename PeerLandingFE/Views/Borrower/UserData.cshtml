@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "User Data";
+    Layout = "_LayoutBorrower";
+}
+
+
+<div class="row">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <h2>User Data</h2>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-start">
+                    <div>
+                        <h5 class="card-title">Nama</h5>
+                        <p class="card-text" id="lenderName"></p>
+                    </div>
+                    <div class="mt-3">
+                        <h5 class="card-title">Role</h5>
+                        <p class="card-text" id="lenderRole"></p>
+                    </div>
+                    <div class="mt-3">
+                        <h5 class="card-title">Balance Amount</h5>
+                        <p class="card-text" id="lenderBalance"></p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/js/topup.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
